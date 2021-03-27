@@ -1,7 +1,4 @@
 # File name: AdaBoost_Regression_sklearn.py
-# https://en.wikipedia.org/wiki/AdaBoost
-# https://machinelearningmastery.com/adaboost-ensemble-in-python/
-# AdaBoost Algorithm
 
 import pandas as pd
 import numpy as np
@@ -167,18 +164,6 @@ def performance_report(set1, set2):
     performance_list = [mse, rmse, mae, r2]
 
     return performance_list
-
-
-def label_encoders(labels, flag):
-    label_encoder = LabelEncoder()
-    if flag == 'transform':
-        # Fit label encoder and return encoded labels.
-        encoded_labels = label_encoder.fit_transform(labels)
-    else:
-        # Transform labels back to original encoding.
-        encoded_labels = label_encoder.inverse_transform(labels)
-
-    return encoded_labels
 
 
 def scaling_data(x_train, x_test):
