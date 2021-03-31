@@ -157,13 +157,25 @@ def ada_boost_regression(x_reg, y_reg, random_state, base_estimator):
 
 def performance_report(set1, set2):
     mse = '{:.3f}'.format(mean_squared_error(set1, set2))
-    rmse = '{:.3f}'.format(np.sqrt(r2_score(set1, set2)) * 100.0)
+    rmse = '{:.3f}'.format(np.sqrt(mean_squared_error(set1, set2)) * 100.0)
     mae = '{:.3f}'.format(mean_absolute_error(set1, set2))
     r2 = '{:.3f}'.format(r2_score(set1, set2) * 100.0)
 
     performance_list = [mse, rmse, mae, r2]
 
     return performance_list
+
+
+def label_encoders(labels, flag):
+    label_encoder = LabelEncoder()
+    if flag == 'transform':
+        # Fit label encoder and return encoded labels.
+        encoded_labels = label_encoder.fit_transform(labels)
+    else:
+        # Transform labels back to original encoding.
+        encoded_labels = label_encoder.inverse_transform(labels)
+
+    return encoded_labels
 
 
 def scaling_data(x_train, x_test):
